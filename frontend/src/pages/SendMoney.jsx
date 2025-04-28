@@ -44,18 +44,28 @@ function SendMoney() {
         <button
           onClick={async() => {
             try{
-              const userId = localStorage.getItem("userId")
-              console.log(userId)
-              const response = await axios.post("http://localhost:3000/api/v1/account/transfer", {
-                userId,
-                amount
-              }, 
-              {
-                headers: {
-                  'Content-Type': 'application.json'
-                }
-              });
-              console.log('Amount transfter successfully')
+              const token = localStorage.getItem("token")
+              const to = user._id
+              console.log(to)
+
+              if (!amount || isNaN(amount) || Number(amount) <= 0) {
+                alert('Please enter a valid amount greater than 0');
+                return;
+              }
+
+              const response = await axios.post("http://localhost:3000/api/v1/account/transfer", 
+                {
+                  to,
+                  amount
+                }, 
+                {
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                  }
+                });
+                navigate("/dashboard");
+              console.log('Amount transfter successfully', response)
             } catch(err) {
               console.log("Transaction failed", err)
             }

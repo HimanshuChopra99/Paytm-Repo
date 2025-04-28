@@ -26,8 +26,12 @@ function Users() {
       <div className='bg-[#ececec] rounded-lg my-5  md:my-10'>
         <input className='w-full py-3 focus:outline-none px-4' type="text" placeholder='Seacrh users...' />
       </div>
-      {users.map((user) => {
-        return <User user={user} />
+      {users.map((user, index) => {
+        if(user._id !== localStorage.getItem("userId")) {
+          return <User key={index} user={user} />
+        } else {
+          return 
+        }
       })}
     </div>
   )

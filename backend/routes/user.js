@@ -53,7 +53,8 @@ userRouter.post("/signup", async(req, res)=> {
 
      res.json({
         msg: "User created successfully",
-        token: token
+        token: token,
+        userId: user._id
      })
 })
 
@@ -84,7 +85,8 @@ userRouter.post("/signin", async(req, res) => {
 
     res.json({
         msg: "Signin successful",
-        token
+        token,
+        userId: user._id
     })
 
 })

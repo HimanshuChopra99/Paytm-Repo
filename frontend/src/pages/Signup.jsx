@@ -49,6 +49,7 @@ function Signup() {
                         }
                     })
                     localStorage.setItem("token", response.data.token)
+                    localStorage.setItem("userId", response.data.userId)
                     navigator("/dashboard")
                     console.log(response)
                } catch(err) {

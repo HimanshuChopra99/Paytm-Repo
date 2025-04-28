@@ -27,7 +27,7 @@ function Signin() {
         }} />
         <Button onClick={async() => {
           try{
-            const resposne = await axios.post("http://localhost:3000/api/v1/user/signin",
+            const response = await axios.post("http://localhost:3000/api/v1/user/signin",
               {
                 username,
                 password
@@ -37,9 +37,10 @@ function Signin() {
                   'Content-Type': 'application/json'
                 }
               })
-              localStorage.setItem("token", resposne.data.token)
+              localStorage.setItem("token", response.data.token)
+              localStorage.setItem("userId", response.data.userId)
               navigator('/dashboard')
-              console.log(resposne)
+              console.log(response.data)
             } catch(err) {
             console.log("Error:", err)
           }
