@@ -8,7 +8,7 @@ function BottomWarning({ label, buttonText, to }) {
   return (
     <div className="py-2 text-sm flex justify-center">
       <div>{label}</div>
-      <div className="pointer underline pl-1 cursor-pointer" onClick={() => {
+      <div className="pointer underline pl-1 cursor-pointer text-blue-700" onClick={() => {
         navigate(to)
       }}>
         {buttonText}

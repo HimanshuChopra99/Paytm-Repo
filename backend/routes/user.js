@@ -145,4 +145,22 @@ userRouter.get("/bulk", async(req, res) => {
     })
 })
 
+userRouter.get('/profile', authMiddleware, async(req, res) => {
+    try{
+        const userId = req.userId
+        userData = await User.findOne({
+            _id: userId
+        })
+        
+        res.json({
+            userData
+        })
+
+    } catch(err) {
+        res.status(401).json({
+            msg: "error in getting user information", err
+        })
+    }
+})
+
 module.exports = userRouter;
