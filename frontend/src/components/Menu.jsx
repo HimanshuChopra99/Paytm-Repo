@@ -13,7 +13,11 @@ function Menu({firstName, lastName, isVisible, toggleVisibility}) {
             <div className='bg-slate-200 flex justify-center items-center rounded-full h-10 w-10'>{firstName?.[0]?.toUpperCase()}</div>
             <div className='text-xl'>{firstName}{lastName}</div>
         </div>
-        <button className='bg-slate-200 w-full rounded-sm py-3 px-4 text-start'>{"Profile>"}</button>
+        <button className='bg-slate-200 w-full rounded-sm py-3 px-4 text-start' onClick={() => {
+            navigate("/profile")
+        }}>{"Profile>"}
+        
+        </button>
         <button onClick={() => {
             localStorage.removeItem("token")
             navigate("/signin")

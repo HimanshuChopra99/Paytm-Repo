@@ -4,9 +4,8 @@ import Menu from './Menu';
 function AppBar({ label, firstName, lastName }) {
 
     const [isVisible, setIsVisible] = useState(false);
+    const toggleVisibility = () => setIsVisible(prev => !prev)
     
-    const toggleVisibility = () => setIsVisible(prev => !prev);
-
   return (
     <div className='flex justify-between items-center relative py-4 px-4 sm:px-10 border-b border-[#727272]'>
         <div className='text-xl sm:text-4xl font-semibold'>
