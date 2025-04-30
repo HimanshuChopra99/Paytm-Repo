@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router';
 
 function Users() {
   const [users, setUsers] = useState([])
+  const [filter, setFilter] = useState('')
 
   useEffect(() => {
     const fetchdata = async () => {
       try{
-        const response = await axios.get("http://localhost:3000/api/v1/user/bulk")
+        const response = await axios.get(`http://localhost:3000/api/v1/user/bulk?filter=${filter}`)
         setUsers(response.data.user)
       } catch(err) {
         console.log("error:", err)
@@ -16,7 +17,7 @@ function Users() {
     };
 
     fetchdata()
-  }, []);
+  }, [filter]);
   
   return (
     <div className='px-4 sm:px-10'>
@@ -24,7 +25,9 @@ function Users() {
         Users
       </div>
       <div className='bg-[#ececec] rounded-lg my-5  md:my-10'>
-        <input className='w-full py-3 focus:outline-none px-4' type="text" placeholder='Seacrh users...' />
+        <input className='w-full py-3 focus:outline-none px-4' value={filter} type="text" placeholder='Seacrh users...' onChange={((e) => {
+          setFilter(e.target.value)
+        })} />
       </div>
       {users.map((user, index) => {
         if(user._id !== localStorage.getItem("userId")) {
