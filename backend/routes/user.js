@@ -91,7 +91,7 @@ userRouter.post("/signin", async(req, res) => {
 
 })
 
-userRouter.put('/', authMiddleware, async(req, res) => {
+userRouter.put('/update', authMiddleware, async(req, res) => {
     const parsedBody = updateUser.safeParse(req.body);
 
     if(!parsedBody.success) {
